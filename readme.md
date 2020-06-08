@@ -12,7 +12,7 @@ BluzelleC# is a native *.Net Core 3* library that can be used to access the Bluz
 ## Installation
 ### Preparation
 * Install .Net Core 3.1 (https://dotnet.microsoft.com/download)
-* *optional:* Install IDE for C# *(Rider for Linux or Visual Studio for Win/Mac)*
+
 ### Including into project
 #### Using Nuget 
 ```
@@ -53,12 +53,25 @@ Console.WriteLine(await bz.Read("x"));
 * Library can run under mono
 
 ## Tests
-Requires installed and configured **blzcli** to run. 
-Preferred OS: Ubuntu 18.04
-Credentials should be placed in *appsettings.json*
-
+Tests can be run using external test suite via HTTP API server located in TestAPI project. 
+To run server:
 ```
-dotnet restore
-dotnet build
-dotnet test
+cd TestAPI
+dotnet run
+```
+Then use http://localhost:5000/ as HTTP POST endpoint for queries in format:
+```json
+{
+  "method": "$method name in Blzjs style$",
+  "args": ["$method arguments in Blzjs style$", ...] 
+}
+```
+All arguments are casted to string and then used in methods. For transaction calls gas configuration should be omitted, it is already set to *GasPrice=10*. Account data and namespace uuid should be placed in *TestAPI/appsettings.json*.
+
+Example:
+```json
+{
+  "method": "create",
+  "args": ["key", "value", 1000] // or ["key", "value", "1000"]
+}
 ```

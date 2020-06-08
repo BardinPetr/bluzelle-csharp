@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using BluzelleCSharp;
 using BluzelleCSharp.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json.Linq;
 using TestAPI.Interfaces;
 
 namespace TestAPI.Controllers
@@ -15,13 +14,13 @@ namespace TestAPI.Controllers
     [Produces("application/json")]
     public class MainController : ControllerBase
     {
-        private BluzelleApi _bz;
-        private GasInfo _gas;
+        private readonly BluzelleApi _bz;
+        private readonly GasInfo _gas;
 
         public MainController(IBlzApi blzApi)
         {
-            _bz = blzApi.Api;
             _gas = blzApi.Gas;
+            _bz = blzApi.Api;
         }
 
         [HttpPost]
@@ -29,96 +28,94 @@ namespace TestAPI.Controllers
         {
             try
             {
-                switch (req.Method)
+                var args = req.Args.Select(i => i.ToString()).ToList();
+                switch (req.Method.ToLower())
                 {
                     case "create":
-                        await _bz.Create(req.Args[0], req.Args[1], new LeaseInfo(int.Parse(req.Args[2])), _gas);
-                        break;
-                    case "txRead":
-                        Console.WriteLine(await _bz.TxRead(req.Args[0], _gas));
+                        await _bz.Create(
+                            args[0],
+                            args[1],
+                            new LeaseInfo(args.Count == 3 ? long.Parse(args[2]) : 0),
+                            _gas);
                         break;
                     case "update":
-                        await _bz.Update(req.Args[0], req.Args[1], new LeaseInfo(int.Parse(req.Args[2])), _gas);
+                        await _bz.Update(
+                            args[0],
+                            args[1],
+                            new LeaseInfo(args.Count == 3 ? long.Parse(args[2]) : 0),
+                            _gas);
                         break;
                     case "delete":
-                        await _bz.Delete(req.Args[0], _gas);
-                        break;
-                    case "txHas":
-                        Console.WriteLine(await _bz.TxHas(req.Args[0], _gas));
-                        break;
-                    case "txKeys":
-                        foreach (var key in await _bz.TxKeys(_gas))
-                            Console.WriteLine(key);
-                        break;
-                    case "read":
-                        Console.WriteLine(await _bz.Read(req.Args[0], req.Args.Length > 2));
-                        break;
-                    case "has":
-                        Console.WriteLine(await _bz.HasKey(req.Args[0]));
-                        break;
-                    case "keys":
-                        foreach (var key in await _bz.Keys()) Console.WriteLine(key);
+                        await _bz.Delete(args[0], _gas);
                         break;
                     case "rename":
-                        await _bz.Rename(req.Args[0], req.Args[1], _gas);
+                        await _bz.Rename(args[0], args[1], _gas);
                         break;
+                    case "read":
+                        return Ok(await _bz.Read(args[0], args.Count == 2));
+                    case "txread":
+                        return Ok(await _bz.TxRead(args[0], _gas));
+                    case "has":
+                        return Ok(await _bz.HasKey(args[0]));
+                    case "txhas":
+                        return Ok(await _bz.TxHas(args[0], _gas));
+                    case "keys":
+                        return Ok(await _bz.Keys());
+                    case "txkeys":
+                        return Ok(await _bz.TxKeys(_gas));
                     case "count":
-                        Console.WriteLine(await _bz.Count());
-                        break;
-                    case "txCount":
-                        Console.WriteLine(await _bz.TxCount(_gas));
-                        break;
-                    case "deleteAll":
+                        return Ok(await _bz.Count());
+                    case "txcount":
+                        return Ok(await _bz.TxCount(_gas));
+                    case "deleteall":
                         await _bz.DeleteAll(_gas);
                         break;
-                    case "keyValues":
-                        foreach (var (key, value) in await _bz.GetKeyValues()) Console.WriteLine($"{key}: {value}");
-                        break;
-                    case "txKeyValues":
-                        foreach (var (key, value) in await _bz.TxGetKeyValues(_gas)) Console.WriteLine($"{key}: {value}");
-                        break;
-                    case "multiUpdate":
+                    case "keyvalues":
+                        var reskv0 = new List<KeyVal>();
+                        foreach (var (key, value) in await _bz.GetKeyValues())
+                            reskv0.Add(new KeyVal {Key = key, Value = value});
+                        return Ok(reskv0);
+                    case "txkeyvalues":
+                        var reskv1 = new List<KeyVal>();
+                        foreach (var (key, value) in await _bz.TxGetKeyValues(_gas))
+                            reskv1.Add(new KeyVal {Key = key, Value = value});
+                        return Ok(reskv1);
+                    case "multiupdate":
                         var data = new Dictionary<string, string>();
-                        for (var i = 1; i < req.Args.Length; i += 2) data.Add(req.Args[i], req.Args[i + 1]);
+                        for (var i = 0; i < args.Count; i += 2)
+                            data.Add(args[i], args[i + 1]);
                         await _bz.UpdateMany(data, _gas);
                         break;
-                    case "getLease":
-                        Console.WriteLine(await _bz.GetLease(req.Args[0]));
+                    case "getlease":
+                        return Ok(await _bz.GetLease(args[0]));
+                    case "txgetlease":
+                        return Ok(await _bz.TxGetLease(args[0], _gas));
+                    case "renewlease":
+                        await _bz.Renew(args[0], new LeaseInfo(long.Parse(args[1])), _gas);
                         break;
-                    case "txGetLease":
-                        Console.WriteLine(await _bz.TxGetLease(req.Args[0], _gas));
+                    case "renewleaseall":
+                        await _bz.RenewAll(new LeaseInfo(long.Parse(args[0])), _gas);
                         break;
-                    case "renewLease":
-                        await _bz.Renew(req.Args[0], new LeaseInfo(int.Parse(req.Args[1])), _gas);
-                        break;
-                    case "renewLeaseAll":
-                        await _bz.RenewAll(new LeaseInfo(int.Parse(req.Args[0])), _gas);
-                        break;
-                    case "getNShortestLease":
-                        foreach (var (key, value) in await _bz.GetNShortestLease(int.Parse(req.Args[0])))
-                            Console.WriteLine($"{key} - {value}");
-                        break;
-                    case "txGetNShortestLease":
-                        foreach (var (key, value) in await _bz.TxGetNShortestLease(int.Parse(req.Args[0]), _gas))
-                            Console.WriteLine($"{key} - {value}");
-                        break;
+                    case "getnshortestlease":
+                        return Ok((await _bz.GetNShortestLease(int.Parse(args[0])))
+                            .Select(x => new KeyLease {Key = x.Key, Lease = x.Value}));
+                    case "txgetnshortestlease":
+                        return Ok((await _bz.TxGetNShortestLease(int.Parse(args[0]), _gas))
+                            .Select(x => new KeyLease {Key = x.Key, Lease = x.Value}));
                     case "account":
-                        var res = _bz.GetAccount().Result;
-                        Console.WriteLine($"{res.Address} - {res.Coins[0].Amount} {res.Coins[0].Denom}");
-                        break;
+                        return Ok(await _bz.GetAccount());
                     case "version":
-                        Console.WriteLine(_bz.GetVersion().Result);
-                        break;
+                        return Ok(await _bz.GetVersion());
                     default:
-                        return StatusCode(400);
+                        return StatusCode(404, $"Method {req.Method} not found");
                 }
             }
             catch (Exception exception)
             {
-                return StatusCode(400, exception.Message);
+                return StatusCode(400, new ExceptionResult(exception));
             }
 
-            return Ok("result");
+            return Ok();
         }
     }
 }
