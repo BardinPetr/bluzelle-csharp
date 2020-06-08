@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
-using System.Text.Encodings.Web;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using BluzelleCSharp.Exceptions;
 using BluzelleCSharp.Models;
 using BluzelleCSharp.Utils;
 using NBitcoin;
@@ -40,12 +39,12 @@ namespace BluzelleCSharp
 
         private readonly string _sessionAddress;
         private readonly Key _sessionPk;
-        
+
+        private readonly SerialQueue _transactionQueue;
+
         protected readonly string NamespaceId;
         private int _sessionAccount;
         private int _sessionSequence;
-
-        private readonly SerialQueue _transactionQueue;
 
         /**
          * <summary>Initializes Cosmos network API</summary>
@@ -67,17 +66,20 @@ namespace BluzelleCSharp
             _sessionPk = MnemonicToPrivateKey(mnemonic);
             _sessionAddress = GetAddress(_sessionPk.PubKey);
 
-            if (_sessionAddress != address) throw new Exceptions.MnemonicInvalidException();
+            if (_sessionAddress != address) throw new MnemonicInvalidException();
 
             _restClient = new RestClient(endpoint);
-            _restClient.UseNewtonsoftJson(new JsonSerializerSettings
-            {
-                ContractResolver = new DefaultContractResolver
+            JsonConvert.DefaultSettings = () =>
+                new JsonSerializerSettings
                 {
-                    NamingStrategy = new SnakeCaseNamingStrategy()
-                },
-                NullValueHandling = NullValueHandling.Ignore
-            });
+                    ContractResolver = new DefaultContractResolver
+                    {
+                        NamingStrategy = new SnakeCaseNamingStrategy()
+                    },
+                    NullValueHandling = NullValueHandling.Ignore
+                };
+
+            _restClient.UseNewtonsoftJson(JsonConvert.DefaultSettings());
 
             _transactionQueue = new SerialQueue();
 
@@ -89,22 +91,38 @@ namespace BluzelleCSharp
          * <typeparam name="T">Query result format wrapped with <see cref="Responce{T}" /></typeparam>
          * <param name="query">Querystring for HTTP. Will be concatenated with endpoint in <see cref="Cosmos" /> constructor</param>
          * <returns>Query result casted to <typeparamref name="T" /></returns>
+         * <exception cref="Exceptions.NodeConnectionFailedException"></exception>
+         * <exception cref="Exceptions.QueryFailedException"></exception>
+         * <exception cref="Exceptions.KeyNotFoundException"></exception>
          */
         public async Task<T> Query<T>(string query)
         {
-            return (await _restClient.GetAsync<Responce<T>>(
-                new RestRequest(UrlEncoder.Default.Encode(query), DataFormat.Json))).Result;
+            try
+            {
+                return (await Query(query)).ToObject<Responce<T>>().Result;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw new QueryFailedException(ex.Message);
+            }
         }
 
         /**
          * <summary>Executes non-transaction REST API GET query without result casting</summary>
          * <param name="query">Querystring for HTTP. Will be concatenated with endpoint in <see cref="Cosmos" /> constructor</param>
          * <returns>Query result in plain <see cref="JObject" /></returns>
+         * <exception cref="Exceptions.NodeConnectionFailedException"></exception>
+         * <exception cref="Exceptions.QueryFailedException"></exception>
+         * <exception cref="Exceptions.KeyNotFoundException"></exception>
          */
         public async Task<JObject> Query(string query)
         {
-            return await _restClient.GetAsync<JObject>(
-                new RestRequest(UrlEncoder.Default.Encode(query), DataFormat.Json));
+            var res = _restClient.Get<JObject>(new RestRequest(query, DataFormat.Json));
+            if (res.ErrorException != null) throw new QueryFailedException(res.ErrorException.Message);
+            if (res.StatusCode == HttpStatusCode.NotFound) throw new KeyNotFoundException();
+            if (res.StatusCode == 0) throw new NodeConnectionFailedException();
+            if (res.Data == null) throw new QueryFailedException(res.ErrorMessage ?? res.Content);
+            return res.Data;
         }
 
         /**
@@ -126,7 +144,7 @@ namespace BluzelleCSharp
             }
             catch
             {
-                throw new Exceptions.InitializationException();
+                throw new InitializationException();
             }
         }
 
@@ -155,9 +173,9 @@ namespace BluzelleCSharp
          * <param name="type">HTTP-style transaction request type</param>
          * <param name="cmd">Transaction command</param>
          * <param name="gasInfo">Gas used to execute transaction</param>
-         * <exception cref="Exceptions.InvalidChainIdException"></exception>
          * <exception cref="Exceptions.TransactionExecutionException"></exception>
-         * <exception cref="KeyNotFoundException"></exception>
+         * <exception cref="Exceptions.InvalidChainIdException"></exception>
+         * <exception cref="Exceptions.KeyNotFoundException"></exception>
          * <returns>JObject contains decoded transaction result</returns>
          */
         public Task<JObject> SendTransaction(
@@ -202,7 +220,7 @@ namespace BluzelleCSharp
          * <exception cref="Exceptions.InvalidChainIdException"></exception>
          * <exception cref="Exceptions.TransactionExecutionException"></exception>
          * <exception cref="Exceptions.InsufficientFundsException"></exception>
-         * <exception cref="KeyNotFoundException"></exception>
+         * <exception cref="Exceptions.KeyNotFoundException"></exception>
          */
         private async Task<JObject> ExecuteTransaction(
             JObject data,
@@ -229,7 +247,7 @@ namespace BluzelleCSharp
                 .AddParameter("application/x-www-form-urlencoded", data, ParameterType.RequestBody);
 
             var resp = _restClient.ExecuteAsync<JObject>(request).Result;
-            if (resp.StatusCode != HttpStatusCode.OK) throw new Exceptions.TransactionExecutionException(resp.Content);
+            if (resp.StatusCode != HttpStatusCode.OK) throw new TransactionExecutionException(resp.Content);
             var tx = resp.Data;
 
             gasInfo?.UpdateTransaction(tx);
@@ -252,21 +270,23 @@ namespace BluzelleCSharp
             request = new RestRequest($"{TxServicePrefix}", httpMethod, DataFormat.Json)
                 .AddParameter("application/x-www-form-urlencoded", requestBody, ParameterType.RequestBody);
 
-            var res = await _restClient.PostAsync<JObject>(request);
+            resp = _restClient.Post<JObject>(request);
+            if (resp.StatusCode != HttpStatusCode.OK) throw new TransactionExecutionException(resp.Content);
 
+            var res = resp.Data;
             // If transaction result contains "code" field - it is failed - therefore try to decode 
             if (res.ContainsKey("code"))
             {
                 var err = res["raw_log"]!.ToString();
-                
+
                 if (err.Contains(KnfErrorMessage)) throw new KeyNotFoundException();
                 if (err.Contains("insufficient funds"))
-                    throw new Exceptions.InsufficientFundsException(
+                    throw new InsufficientFundsException(
                         Regex.Match(err, @"\d+ubnt\s\<\s\d+ubnt").Value);
                 // If failed due to invalid sequence ID or due to invalid signature,
                 // wait, retrieve user data again and then re-execute transaction
                 if (!err.Contains(SvfErrorMessage))
-                    throw new Exceptions.TransactionExecutionException(
+                    throw new TransactionExecutionException(
                         ExtractErrorFromMessage((string) res["raw_log"]));
 
                 while (retries > 0)
@@ -276,7 +296,7 @@ namespace BluzelleCSharp
                     if (UpdateAccount()) return await ExecuteTransaction(data, type, cmd, gasInfo, retries);
                 }
 
-                throw new Exceptions.InvalidChainIdException();
+                throw new InvalidChainIdException();
             }
 
             _sessionSequence++;

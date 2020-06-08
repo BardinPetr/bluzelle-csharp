@@ -2,10 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Encodings.Web;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using BluzelleCSharp.Exceptions;
 using BluzelleCSharp.Models;
-using BluzelleCSharp.Utils;
 using Newtonsoft.Json.Linq;
 
 namespace BluzelleCSharp
@@ -28,7 +27,7 @@ namespace BluzelleCSharp
          * <param name="endpoint">REST API endpoint including protocol and port</param>
          */
         public BluzelleApi(string namespaceId, string mnemonic, string address,
-            string endpoint = "http://testnet.public.bluzelle.com:1317") : 
+            string endpoint = "http://testnet.public.bluzelle.com:1317") :
             base(namespaceId, mnemonic, address, "bluzelle", endpoint)
         {
         }
@@ -40,13 +39,12 @@ namespace BluzelleCSharp
          * <param name="id">DB key string</param>
          * <param name="prove">Use "pread" of "read" operation</param>
          * <returns>String value</returns>
-         * <exception cref="KeyNotFoundException"></exception>
+         * <exception cref="Exceptions.KeyNotFoundException"></exception>
          */
         public async Task<string> Read(string id, bool prove = false)
         {
             var data = await Query<JObject>(
                 $"{CrudServicePrefix}/{(prove ? "p" : "")}read/{NamespaceId}/{UrlEncoder.Default.Encode(id)}");
-            if (data == null) throw new KeyNotFoundException();
             return (string) data["value"];
         }
 
@@ -94,9 +92,9 @@ namespace BluzelleCSharp
          * <param name="key">DB key string</param>
          * <returns>Lease time in seconds</returns>
          */
-        public async Task<int> GetLease(string key)
+        public async Task<long> GetLease(string key)
         {
-            return (int) (await Query<JObject>($"{CrudServicePrefix}/getlease/{NamespaceId}/{key}"))["lease"]
+            return (long) (await Query<JObject>($"{CrudServicePrefix}/getlease/{NamespaceId}/{key}"))["lease"]
                    * BlockTimeInSeconds;
         }
 
@@ -105,7 +103,7 @@ namespace BluzelleCSharp
          * <param name="n">Leases number to return</param>
          * <returns>List containing shortest leases in ascending order with KeyValuePair of keys and its' leases in seconds</returns>
          */
-        public async Task<List<KeyValuePair<string, int>>> GetNShortestLease(int n)
+        public async Task<List<KeyValuePair<string, long>>> GetNShortestLease(int n)
         {
             var res = await Query<JObject>($"{CrudServicePrefix}/getnshortestleases/{NamespaceId}/{n}");
             return PostprocessNShortestLeases(res["keyleases"] ?? throw new Exception("Failed to get leases list"));
@@ -142,12 +140,13 @@ namespace BluzelleCSharp
                     ["Lease"] = leaseInfo == null ? "0" : leaseInfo.Value
                 }, "post", "create", gasInfo);
             }
-            catch (Exceptions.TransactionExecutionException ex){
-                if (ex.Message.Contains("already exists")) 
-                    throw new Exceptions.KeyAlreadyExistsException();
+            catch (TransactionExecutionException ex)
+            {
+                if (ex.Message.Contains("already exists"))
+                    throw new KeyAlreadyExistsException();
                 throw;
             }
-    }
+        }
 
         /**
          * <summary>Update Key's value to <paramref name="value" /> in current namespace</summary>
@@ -274,6 +273,7 @@ namespace BluzelleCSharp
          * <param name="key">DB key string</param>
          * <param name="gasInfo">Gas specified for transaction execution</param>
          * <returns>String value</returns>
+         * <exception cref="Exceptions.KeyNotFoundException"></exception>
          */
         public async Task<string> TxRead(string key, GasInfo gasInfo = null)
         {
@@ -335,9 +335,9 @@ namespace BluzelleCSharp
          * <param name="gasInfo">Gas specified for transaction execution</param>
          * <returns>Lease time in seconds</returns>
          */
-        public async Task<int> TxGetLease(string key, GasInfo gasInfo = null)
+        public async Task<long> TxGetLease(string key, GasInfo gasInfo = null)
         {
-            return (int) (await SendTransaction(new JObject
+            return (long) (await SendTransaction(new JObject
             {
                 ["Key"] = key
             }, "post", "getlease", gasInfo))["lease"] * BlockTimeInSeconds;
@@ -349,7 +349,7 @@ namespace BluzelleCSharp
          * <param name="gasInfo">Gas specified for transaction execution</param>
          * <returns>List containing shortest leases in ascending order with KeyValuePair of keys and its' leases in seconds</returns>
          */
-        public async Task<List<KeyValuePair<string, int>>> TxGetNShortestLease(int n, GasInfo gasInfo = null)
+        public async Task<List<KeyValuePair<string, long>>> TxGetNShortestLease(int n, GasInfo gasInfo = null)
         {
             if (n < 0) throw new Exception("Invalid N");
             var res = await SendTransaction(new JObject
@@ -384,15 +384,15 @@ namespace BluzelleCSharp
          * <param name="data">JSON array of objects with "key" and "lease" fields</param>
          * <returns>List containing shortest leases in ascending order with KeyValuePair of keys and its' leases in seconds</returns>
          */
-        private static List<KeyValuePair<string, int>> PostprocessNShortestLeases(JToken data)
+        private static List<KeyValuePair<string, long>> PostprocessNShortestLeases(JToken data)
         {
             return data.Aggregate(
-                new List<KeyValuePair<string, int>>(),
+                new List<KeyValuePair<string, long>>(),
                 (cur, next) =>
                 {
-                    cur.Add(new KeyValuePair<string, int>(
+                    cur.Add(new KeyValuePair<string, long>(
                         (string) next["key"],
-                        (int) next["lease"] * BlockTimeInSeconds)
+                        (long) next["lease"] * BlockTimeInSeconds)
                     );
                     return cur;
                 });

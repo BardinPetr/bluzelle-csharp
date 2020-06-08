@@ -9,7 +9,7 @@ namespace BluzelleCSharp.Models
         /**
          * <summary>Generates lease info in blocks from user input via separated time parameters</summary>
          */
-        public LeaseInfo(int days, int hours, int minutes, int seconds)
+        public LeaseInfo(long days, long hours, long minutes, long seconds)
         {
             var res = (days * 26 * 60 * 60 + hours * 60 * 60 + minutes * 60 + seconds)
                       / BluzelleApi.BlockTimeInSeconds;
@@ -17,7 +17,7 @@ namespace BluzelleCSharp.Models
             Value = res.ToString();
         }
 
-        public LeaseInfo(int seconds)
+        public LeaseInfo(long seconds)
         {
             if (seconds < 0) throw new Exceptions.InvalidLeaseException();
             Value = (seconds / BluzelleApi.BlockTimeInSeconds).ToString();
