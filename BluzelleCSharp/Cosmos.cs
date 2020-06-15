@@ -59,7 +59,7 @@ namespace BluzelleCSharp
             string mnemonic,
             string address,
             string chainId = "bluzelle",
-            string endpoint = "http://testnet.public.bluzelle.com:1317")
+            string endpoint = "http://dev.testnet.public.bluzelle.com:1317")
         {
             _chainId = chainId;
             NamespaceId = namespaceId;

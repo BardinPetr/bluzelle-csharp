@@ -27,7 +27,7 @@ namespace BluzelleCSharp
          * <param name="endpoint">REST API endpoint including protocol and port</param>
          */
         public BluzelleApi(string namespaceId, string mnemonic, string address,
-            string endpoint = "http://testnet.public.bluzelle.com:1317") :
+            string endpoint = "http://dev.testnet.public.bluzelle.com:1317") :
             base(namespaceId, mnemonic, address, "bluzelle", endpoint)
         {
         }
