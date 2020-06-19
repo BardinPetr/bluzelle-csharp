@@ -17,7 +17,7 @@ namespace BluzelleCSharp.Utils
         /**
          * <summary>Decoding Cosmos transaction "data" field from hex</summary>
          * <param name="hex">Cosmos transaction data hex-encoded</param>
-         * <returns>Decoded JSON object as <see cref="JObject"/></returns>
+         * <returns>Decoded JSON object as <see cref="JObject" /></returns>
          */
         public static JObject ParseTransactionResult(string hex)
         {
@@ -29,12 +29,23 @@ namespace BluzelleCSharp.Utils
         }
 
         /**
-         * <summary>Like sanitize_string in blzjs - escape utf8's '&', '>' and '<'</summary>
+         * <summary>
+         *     Like sanitize_string in blzjs - escape utf8's '&', '>' and '<'</summary>
          */
         public static string EscapeCosmosString(string str)
         {
             return str.Aggregate("", (acc, x) =>
-                acc + (new[] {'&', '>', '<'}.Contains(x) ? $"\\u00{(int) x:X}" : $"{x}"));
+                acc + (new[] {'&', '>', '<'}.Contains(x) ? $"\\u00{(int) x:X}".ToLower() : $"{x}"));
+        }
+
+        /**
+         * <summary>Encode URL string safe, escaping '#' and '?'</summary>
+         */
+        public static string EncodeSafe(string str)
+        {
+            return UrlEncoder.Default.Encode(str)
+                .Aggregate("", (acc, x) =>
+                    acc + (new[] {'#', '?'}.Contains(x) ? $"%{(int) x:X}" : $"{x}"));
         }
 
         /**
@@ -114,7 +125,7 @@ namespace BluzelleCSharp.Utils
         /**
          * <summary>Use BIP39 to decode private key from mnemonic</summary>
          * <param name="mnemonic">BIP39 mnemonic string</param>
-         * <returns>Private key in <see cref="NBitcoin.Key"/> format</returns>
+         * <returns>Private key in <see cref="NBitcoin.Key" /> format</returns>
          */
         public static Key MnemonicToPrivateKey(string mnemonic)
         {
@@ -123,7 +134,7 @@ namespace BluzelleCSharp.Utils
 
         /**
          * <summary>Return Cosmos network address from public key</summary>
-         * <param name="key">Public key in <see cref="NBitcoin.PubKey"/> format</param>
+         * <param name="key">Public key in <see cref="NBitcoin.PubKey" /> format</param>
          * <returns>Formatted address string</returns>
          */
         public static string GetAddress(PubKey key)

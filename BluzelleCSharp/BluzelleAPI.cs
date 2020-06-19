@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BluzelleCSharp.Exceptions;
 using BluzelleCSharp.Models;
 using Newtonsoft.Json.Linq;
+using static BluzelleCSharp.Utils.Utils;
 
 namespace BluzelleCSharp
 {
@@ -44,7 +45,7 @@ namespace BluzelleCSharp
         public async Task<string> Read(string id, bool prove = false)
         {
             var data = await Query<JObject>(
-                $"{CrudServicePrefix}/{(prove ? "p" : "")}read/{NamespaceId}/{UrlEncoder.Default.Encode(id)}");
+                $"{CrudServicePrefix}/{(prove ? "p" : "")}read/{NamespaceId}/{EncodeSafe(id)}");
             return (string) data["value"];
         }
 
@@ -55,7 +56,7 @@ namespace BluzelleCSharp
          */
         public async Task<bool> HasKey(string id)
         {
-            return (bool) (await Query<JObject>($"{CrudServicePrefix}/has/{NamespaceId}/{id}"))["has"];
+            return (bool) (await Query<JObject>($"{CrudServicePrefix}/has/{NamespaceId}/{EncodeSafe(id)}"))["has"];
         }
 
         /**
@@ -88,13 +89,13 @@ namespace BluzelleCSharp
         }
 
         /**
-         * <summary>Get lease time of key <paramref name="key" /></summary>
-         * <param name="key">DB key string</param>
+         * <summary>Get lease time of key <paramref name="id" /></summary>
+         * <param name="id">DB key string</param>
          * <returns>Lease time in seconds</returns>
          */
-        public async Task<long> GetLease(string key)
+        public async Task<long> GetLease(string id)
         {
-            return (long) (await Query<JObject>($"{CrudServicePrefix}/getlease/{NamespaceId}/{key}"))["lease"]
+            return (long) (await Query<JObject>($"{CrudServicePrefix}/getlease/{NamespaceId}/{EncodeSafe(id)}"))["lease"]
                    * BlockTimeInSeconds;
         }
 
@@ -128,9 +129,12 @@ namespace BluzelleCSharp
          * <param name="leaseInfo">Lease time for new key</param>
          * <param name="gasInfo">Gas specified for transaction execution</param>
          * <exception cref="Exceptions.KeyAlreadyExistsException"></exception>
+         * <exception cref="Exceptions.KeyContainsSlashException"></exception>
          */
         public async Task Create(string key, string value, LeaseInfo leaseInfo = null, GasInfo gasInfo = null)
         {
+            if(key.Contains("/")) throw new KeyContainsSlashException();
+            if(key.Equals("")) throw new KeyEmptyException();
             try
             {
                 await SendTransaction(new JObject

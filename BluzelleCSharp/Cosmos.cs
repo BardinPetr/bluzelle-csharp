@@ -26,6 +26,7 @@ namespace BluzelleCSharp
     {
         private const string SvfErrorMessage = "signature verification failed";
         private const string KnfErrorMessage = "Key does not exist";
+        private const string FundsMessage = "insufficient funds";
 
         protected const string CrudServicePrefix = "crud";
         private const string TxServicePrefix = "txs";
@@ -221,6 +222,7 @@ namespace BluzelleCSharp
          * <exception cref="Exceptions.TransactionExecutionException"></exception>
          * <exception cref="Exceptions.InsufficientFundsException"></exception>
          * <exception cref="Exceptions.KeyNotFoundException"></exception>
+         * <exception cref="Exceptions.KeyDoesNotExistException"></exception>
          */
         private async Task<JObject> ExecuteTransaction(
             JObject data,
@@ -279,8 +281,10 @@ namespace BluzelleCSharp
             {
                 var err = res["raw_log"]!.ToString();
 
-                if (err.Contains(KnfErrorMessage)) throw new KeyNotFoundException();
-                if (err.Contains("insufficient funds"))
+                if (err.Contains(KnfErrorMessage))
+                    throw new KeyDoesNotExistException(Regex.Match(err, @"\[\d+\]").Value);
+                
+                if (err.Contains(FundsMessage))
                     throw new InsufficientFundsException(
                         Regex.Match(err, @"\d+ubnt\s\<\s\d+ubnt").Value);
                 // If failed due to invalid sequence ID or due to invalid signature,

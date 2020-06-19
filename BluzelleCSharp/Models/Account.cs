@@ -9,7 +9,7 @@ namespace BluzelleCSharp.Models
 
         public class Coin
         {
-            public ulong Amount { get; set; }
+            public string Amount { get; set; }
             public string Denom { get; set; }
         }
 
