@@ -26,7 +26,7 @@ namespace TestAPI
                 {
                     webBuilder.UseStartup<Startup>();
                     var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
-                    webBuilder.UseUrls($"http://localhost:{port}/");
+                    webBuilder.UseUrls($"http://0.0.0.0:{port}/");
                 });
     }
 }
