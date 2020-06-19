@@ -5,7 +5,6 @@ namespace TestAPI.Interfaces
 {
     public interface IBlzApi
     {
-        BluzelleApi Api { get; }
-        GasInfo Gas { get; }
+        BluzelleApi Api { get; } 
     }
 }

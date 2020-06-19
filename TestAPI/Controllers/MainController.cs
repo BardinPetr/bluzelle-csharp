@@ -1,11 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using BluzelleCSharp;
 using BluzelleCSharp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using TestAPI.Interfaces;
+using TestAPI.Models;
+using System.Text.Json.Serialization;
+using System.Text.Json;
+using RestSharp.Extensions;
 
 namespace TestAPI.Controllers
 {
@@ -15,12 +22,37 @@ namespace TestAPI.Controllers
     public class MainController : ControllerBase
     {
         private readonly BluzelleApi _bz;
-        private readonly GasInfo _gas;
+        private GasInfo _gas;
 
         public MainController(IBlzApi blzApi)
         {
-            _gas = blzApi.Gas;
             _bz = blzApi.Api;
+        }
+
+        public OkObjectResult OkUndefined()
+        {
+            Console.WriteLine("RESPONDED WITH OK");
+            Console.WriteLine("----------------------------END----------------------------");
+            var res = Encoding.ASCII.GetBytes("undefined");
+            // Response.Headers.Add("Content-Type", "application/json; charset=utf-8");
+            // Response.Body.WriteAsync(res).AsTask().Wait();
+            return Ok("undefined");
+        }
+
+        public override OkObjectResult Ok(object value)
+        {
+            Console.WriteLine("RESPONDED WITH");
+            Console.WriteLine(JsonConvert.SerializeObject(value));
+            Console.WriteLine("----------------------------END----------------------------");
+            return base.Ok(value);
+        }
+
+        public override ObjectResult StatusCode(int statusCode, object value)
+        {
+            Console.WriteLine($"ERROR {statusCode}");
+            Console.WriteLine(JsonConvert.SerializeObject(value));
+            Console.WriteLine("----------------------------END----------------------------");
+            return base.StatusCode(statusCode, value);
         }
 
         [HttpPost]
@@ -29,26 +61,58 @@ namespace TestAPI.Controllers
             try
             {
                 var args = req.Args.Select(i => i.ToString()).ToList();
+                Console.Write($"{req.Method} -> ");
+                foreach (var s in args) Console.Write($"{s} ");
+                Console.WriteLine("");
+
+                _gas = new GasInfo {GasPrice = 10};
+                for (var i = 0; i < args.Count; i++)
+                {
+                    if (!args[i].Contains("gas") && !args[i].Contains("fee")) continue;
+                    _gas = JsonConvert.DeserializeObject<GasInfo>(args[i]);
+                    args.RemoveAt(i);
+                    i--;
+                }
+
+                LeaseInfo leaseInfo;
                 switch (req.Method.ToLower())
                 {
                     case "create":
+                        if ((req.Args[0] as dynamic).ValueKind == JsonValueKind.Number)
+                            return StatusCode(400, "Key must be a string");
+                        if ((req.Args[1] as dynamic).ValueKind == JsonValueKind.Number)
+                            return StatusCode(400, "Value must be a string");
+                        leaseInfo = args.Count == 3
+                            ? JsonConvert.DeserializeObject<LeaseInfo>(args[^1]!)
+                            : new LeaseInfo();
                         await _bz.Create(
                             args[0],
                             args[1],
-                            new LeaseInfo(args.Count == 3 ? long.Parse(args[2]) : 0),
+                            leaseInfo,
                             _gas);
                         break;
                     case "update":
+                        if ((req.Args[0] as dynamic).ValueKind == JsonValueKind.Number ||
+                            (req.Args[1] as dynamic).ValueKind == JsonValueKind.Number)
+                            return StatusCode(400);
+                        leaseInfo = args.Count == 3
+                            ? JsonConvert.DeserializeObject<LeaseInfo>(args[^1]!)
+                            : new LeaseInfo();
                         await _bz.Update(
                             args[0],
                             args[1],
-                            new LeaseInfo(args.Count == 3 ? long.Parse(args[2]) : 0),
+                            leaseInfo,
                             _gas);
                         break;
                     case "delete":
+                        if ((req.Args[0] as dynamic).ValueKind == JsonValueKind.Number)
+                            return StatusCode(400);
                         await _bz.Delete(args[0], _gas);
                         break;
                     case "rename":
+                        if ((req.Args[0] as dynamic).ValueKind == JsonValueKind.Number ||
+                            (req.Args[1] as dynamic).ValueKind == JsonValueKind.Number)
+                            return StatusCode(400);
                         await _bz.Rename(args[0], args[1], _gas);
                         break;
                     case "read":
@@ -81,9 +145,8 @@ namespace TestAPI.Controllers
                             reskv1.Add(new KeyVal {Key = key, Value = value});
                         return Ok(reskv1);
                     case "multiupdate":
-                        var data = new Dictionary<string, string>();
-                        for (var i = 0; i < args.Count; i += 2)
-                            data.Add(args[i], args[i + 1]);
+                        var res = JsonConvert.DeserializeObject<List<JObject>>(args[0]); 
+                        var data = res.ToDictionary(i => (string) i["key"], i => (string) i["value"]);
                         await _bz.UpdateMany(data, _gas);
                         break;
                     case "getlease":
@@ -91,15 +154,21 @@ namespace TestAPI.Controllers
                     case "txgetlease":
                         return Ok(await _bz.TxGetLease(args[0], _gas));
                     case "renewlease":
-                        await _bz.Renew(args[0], new LeaseInfo(long.Parse(args[1])), _gas);
+                        leaseInfo = args.Count == 2
+                            ? JsonConvert.DeserializeObject<LeaseInfo>(args[1]!)
+                            : new LeaseInfo();
+                        await _bz.Renew(args[0], leaseInfo, _gas);
                         break;
                     case "renewleaseall":
-                        await _bz.RenewAll(new LeaseInfo(long.Parse(args[0])), _gas);
+                        leaseInfo = args.Count == 1
+                            ? JsonConvert.DeserializeObject<LeaseInfo>(args[0]!)
+                            : new LeaseInfo();
+                        await _bz.RenewAll(leaseInfo, _gas);
                         break;
-                    case "getnshortestlease":
+                    case "getnshortestleases":
                         return Ok((await _bz.GetNShortestLease(int.Parse(args[0])))
                             .Select(x => new KeyLease {Key = x.Key, Lease = x.Value}));
-                    case "txgetnshortestlease":
+                    case "txgetnshortestleases":
                         return Ok((await _bz.TxGetNShortestLease(int.Parse(args[0]), _gas))
                             .Select(x => new KeyLease {Key = x.Key, Lease = x.Value}));
                     case "account":
@@ -112,10 +181,10 @@ namespace TestAPI.Controllers
             }
             catch (Exception exception)
             {
-                return StatusCode(400, new ExceptionResult(exception));
+                return StatusCode(400, exception.Message);
             }
 
-            return Ok();
+            return Ok("null");
         }
     }
 }

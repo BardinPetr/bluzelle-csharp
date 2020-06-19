@@ -1,13 +1,13 @@
 using System;
 
-namespace TestAPI
+namespace TestAPI.Models
 {
     internal class ExceptionResult
     {
         public ExceptionResult(Exception ex)
         {
-            Message = ex.Message;
-            Error = ex.GetType().ToString();
+             Error = ex.Message;
+             Message = ex.GetType().ToString();
         }
 
         public string Message { get; }

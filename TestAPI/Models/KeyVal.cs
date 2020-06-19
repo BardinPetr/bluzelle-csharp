@@ -1,4 +1,4 @@
-namespace TestAPI
+namespace TestAPI.Models
 {
     public class KeyVal
     {
