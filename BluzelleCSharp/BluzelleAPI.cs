@@ -27,7 +27,7 @@ namespace BluzelleCSharp
          * <param name="address">Account address in Cosmos format. It'll be verified over given mnemonic</param>
          * <param name="endpoint">REST API endpoint including protocol and port</param>
          */
-        public BluzelleApi(string namespaceId, string mnemonic, string address,
+        public BluzelleApi(string namespaceId, string mnemonic, string address = null,
             string endpoint = "http://dev.testnet.public.bluzelle.com:1317") :
             base(namespaceId, mnemonic, address, "bluzelle", endpoint)
         {

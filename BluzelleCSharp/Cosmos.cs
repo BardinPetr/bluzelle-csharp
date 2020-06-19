@@ -58,7 +58,7 @@ namespace BluzelleCSharp
         public Cosmos(
             string namespaceId,
             string mnemonic,
-            string address,
+            string address = null,
             string chainId = "bluzelle",
             string endpoint = "http://dev.testnet.public.bluzelle.com:1317")
         {
@@ -66,8 +66,8 @@ namespace BluzelleCSharp
             NamespaceId = namespaceId;
             _sessionPk = MnemonicToPrivateKey(mnemonic);
             _sessionAddress = GetAddress(_sessionPk.PubKey);
-
-            if (_sessionAddress != address) throw new MnemonicInvalidException();
+            
+            if (address != null && _sessionAddress != address) throw new MnemonicInvalidException();
 
             _restClient = new RestClient(endpoint);
             JsonConvert.DefaultSettings = () =>
