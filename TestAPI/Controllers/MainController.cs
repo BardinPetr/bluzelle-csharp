@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using BluzelleCSharp;
 using BluzelleCSharp.Models;
@@ -10,9 +11,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using TestAPI.Interfaces;
 using TestAPI.Models;
-using System.Text.Json.Serialization;
-using System.Text.Json;
-using RestSharp.Extensions;
 
 namespace TestAPI.Controllers
 {
@@ -28,17 +26,7 @@ namespace TestAPI.Controllers
         {
             _bz = blzApi.Api;
         }
-
-        public OkObjectResult OkUndefined()
-        {
-            Console.WriteLine("RESPONDED WITH OK");
-            Console.WriteLine("----------------------------END----------------------------");
-            var res = Encoding.ASCII.GetBytes("undefined");
-            // Response.Headers.Add("Content-Type", "application/json; charset=utf-8");
-            // Response.Body.WriteAsync(res).AsTask().Wait();
-            return Ok("undefined");
-        }
-
+        
         public override OkObjectResult Ok(object value)
         {
             Console.WriteLine("RESPONDED WITH");
@@ -83,8 +71,9 @@ namespace TestAPI.Controllers
                         if ((req.Args[1] as dynamic).ValueKind == JsonValueKind.Number)
                             return StatusCode(400, "Value must be a string");
                         leaseInfo = args.Count == 3
-                            ? JsonConvert.DeserializeObject<LeaseInfo>(args[^1]!)
+                            ? JsonConvert.DeserializeObject<LeaseInfo>(args[2]!)
                             : new LeaseInfo();
+                        leaseInfo = new LeaseInfo{Days = 10};
                         await _bz.Create(
                             args[0],
                             args[1],
@@ -145,7 +134,7 @@ namespace TestAPI.Controllers
                             reskv1.Add(new KeyVal {Key = key, Value = value});
                         return Ok(reskv1);
                     case "multiupdate":
-                        var res = JsonConvert.DeserializeObject<List<JObject>>(args[0]); 
+                        var res = JsonConvert.DeserializeObject<List<JObject>>(args[0]);
                         var data = res.ToDictionary(i => (string) i["key"], i => (string) i["value"]);
                         await _bz.UpdateMany(data, _gas);
                         break;
@@ -172,7 +161,7 @@ namespace TestAPI.Controllers
                         return Ok((await _bz.TxGetNShortestLease(int.Parse(args[0]), _gas))
                             .Select(x => new KeyLease {Key = x.Key, Lease = x.Value}));
                     case "account":
-                        return Ok(await _bz.GetAccount());
+                        return Content(JsonConvert.SerializeObject(await _bz.GetAccount()));
                     case "version":
                         return Ok(await _bz.GetVersion());
                     default:
@@ -184,7 +173,7 @@ namespace TestAPI.Controllers
                 return StatusCode(400, exception.Message);
             }
 
-            return Ok("null");
+            return Content("null");
         }
     }
 }
