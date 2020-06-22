@@ -71,8 +71,9 @@ namespace TestAPI.Controllers
                         if ((req.Args[1] as dynamic).ValueKind == JsonValueKind.Number)
                             return StatusCode(400, "Value must be a string");
                         leaseInfo = args.Count == 3
-                            ? JsonConvert.DeserializeObject<LeaseInfo>(args[^1]!)
+                            ? JsonConvert.DeserializeObject<LeaseInfo>(args[2]!)
                             : new LeaseInfo();
+                        leaseInfo = new LeaseInfo{Days = 10};
                         await _bz.Create(
                             args[0],
                             args[1],
