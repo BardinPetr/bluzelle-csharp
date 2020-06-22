@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using BluzelleCSharp.Exceptions;
 using BluzelleCSharp.Models;
@@ -41,6 +40,7 @@ namespace BluzelleCSharp
          * <param name="prove">Use "pread" of "read" operation</param>
          * <returns>String value</returns>
          * <exception cref="Exceptions.KeyNotFoundException"></exception>
+         * <exception cref="Exceptions.CouldNotReadKeyException"></exception>
          */
         public async Task<string> Read(string id, bool prove = false)
         {
@@ -95,7 +95,8 @@ namespace BluzelleCSharp
          */
         public async Task<long> GetLease(string id)
         {
-            return (long) (await Query<JObject>($"{CrudServicePrefix}/getlease/{NamespaceId}/{EncodeSafe(id)}"))["lease"]
+            return (long) (await Query<JObject>($"{CrudServicePrefix}/getlease/{NamespaceId}/{EncodeSafe(id)}"))
+                   ["lease"]
                    * BlockTimeInSeconds;
         }
 
@@ -133,8 +134,8 @@ namespace BluzelleCSharp
          */
         public async Task Create(string key, string value, LeaseInfo leaseInfo = null, GasInfo gasInfo = null)
         {
-            if(key.Contains("/")) throw new KeyContainsSlashException();
-            if(key.Equals("")) throw new KeyEmptyException();
+            if (key.Contains("/")) throw new KeyContainsSlashException();
+            if (key.Equals("")) throw new KeyEmptyException();
             try
             {
                 await SendTransaction(new JObject

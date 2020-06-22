@@ -120,7 +120,8 @@ namespace BluzelleCSharp
         {
             var res = _restClient.Get<JObject>(new RestRequest(query, DataFormat.Json));
             if (res.ErrorException != null) throw new QueryFailedException(res.ErrorException.Message);
-            if (res.StatusCode == HttpStatusCode.NotFound) throw new KeyNotFoundException();
+            if (res.StatusCode == HttpStatusCode.NotFound)
+                throw query.Contains("pread") ? (Exception) new CouldNotReadKeyException() : new KeyNotFoundException();
             if (res.StatusCode == 0) throw new NodeConnectionFailedException();
             if (res.Data == null) throw new QueryFailedException(res.ErrorMessage ?? res.Content);
             return res.Data;
