@@ -1,0 +1,1499 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class BluzelleApi
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class BluzelleApi
+   ">
+    <meta name="generator" content="docfx 2.45.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="BluzelleCSharp.BluzelleApi">
+  
+  
+  <h1 id="BluzelleCSharp_BluzelleApi" data-uid="BluzelleCSharp.BluzelleApi" class="text-break">Class BluzelleApi
+  </h1>
+  <div class="markdown level0 summary"><p>API for bluzelle database.
+Most of operations are available in transaction (methods have 'tx' prefix) and query styles</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="BluzelleCSharp.Cosmos.html">Cosmos</a></div>
+    <div class="level2"><span class="xref">BluzelleApi</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="BluzelleCSharp.Cosmos.html#BluzelleCSharp_Cosmos_CrudServicePrefix">Cosmos.CrudServicePrefix</a>
+    </div>
+    <div>
+      <a class="xref" href="BluzelleCSharp.Cosmos.html#BluzelleCSharp_Cosmos_TokenName">Cosmos.TokenName</a>
+    </div>
+    <div>
+      <a class="xref" href="BluzelleCSharp.Cosmos.html#BluzelleCSharp_Cosmos_NamespaceId">Cosmos.NamespaceId</a>
+    </div>
+    <div>
+      <a class="xref" href="BluzelleCSharp.Cosmos.html#BluzelleCSharp_Cosmos_Query__1_System_String_">Cosmos.Query&lt;T&gt;(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="BluzelleCSharp.Cosmos.html#BluzelleCSharp_Cosmos_Query_System_String_">Cosmos.Query(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="BluzelleCSharp.Cosmos.html#BluzelleCSharp_Cosmos_GetAccount_System_String_">Cosmos.GetAccount(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="BluzelleCSharp.Cosmos.html#BluzelleCSharp_Cosmos_GetAccount">Cosmos.GetAccount()</a>
+    </div>
+    <div>
+      <a class="xref" href="BluzelleCSharp.Cosmos.html#BluzelleCSharp_Cosmos_SendTransaction_JObject_System_String_System_String_BluzelleCSharp_Models_GasInfo_">Cosmos.SendTransaction(JObject, String, String, GasInfo)</a>
+    </div>
+    <div>
+      <a class="xref" href="BluzelleCSharp.Cosmos.html#BluzelleCSharp_Cosmos_SendTransaction_System_String_System_String_BluzelleCSharp_Models_GasInfo_">Cosmos.SendTransaction(String, String, GasInfo)</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="BluzelleCSharp.html">BluzelleCSharp</a></h6>
+  <h6><strong>Assembly</strong>: BluzelleCSharp.dll</h6>
+  <h5 id="BluzelleCSharp_BluzelleApi_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class BluzelleApi : Cosmos</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/new/master/apiSpec/new?filename=BluzelleCSharp_BluzelleApi__ctor_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20BluzelleCSharp.BluzelleApi.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/blob/master/BluzelleCSharp/BluzelleAPI.cs/#L29">View Source</a>
+  </span>
+  <a id="BluzelleCSharp_BluzelleApi__ctor_" data-uid="BluzelleCSharp.BluzelleApi.#ctor*"></a>
+  <h4 id="BluzelleCSharp_BluzelleApi__ctor_System_String_System_String_System_String_System_String_" data-uid="BluzelleCSharp.BluzelleApi.#ctor(System.String,System.String,System.String,System.String)">BluzelleApi(String, String, String, String)</h4>
+  <div class="markdown level1 summary"><p>Initializes Bluzelle Database API</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BluzelleApi(string namespaceId, string mnemonic, string address = null, string endpoint = &quot;http://dev.testnet.public.bluzelle.com:1317&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">namespaceId</span></td>
+        <td><p>Bluzelle Database Namespace ID</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">mnemonic</span></td>
+        <td><p>Mnemonic for account in BIP39</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">address</span></td>
+        <td><p>Account address in Cosmos format. It'll be verified over given mnemonic</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">endpoint</span></td>
+        <td><p>REST API endpoint including protocol and port</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/new/master/apiSpec/new?filename=BluzelleCSharp_BluzelleApi_BlockTimeInSeconds.md&amp;value=---%0Auid%3A%20BluzelleCSharp.BluzelleApi.BlockTimeInSeconds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/blob/master/BluzelleCSharp/BluzelleAPI.cs/#L20">View Source</a>
+  </span>
+  <h4 id="BluzelleCSharp_BluzelleApi_BlockTimeInSeconds" data-uid="BluzelleCSharp.BluzelleApi.BlockTimeInSeconds">BlockTimeInSeconds</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int BlockTimeInSeconds = 5</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/new/master/apiSpec/new?filename=BluzelleCSharp_BluzelleApi_Count.md&amp;value=---%0Auid%3A%20BluzelleCSharp.BluzelleApi.Count%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/blob/master/BluzelleCSharp/BluzelleAPI.cs/#L76">View Source</a>
+  </span>
+  <a id="BluzelleCSharp_BluzelleApi_Count_" data-uid="BluzelleCSharp.BluzelleApi.Count*"></a>
+  <h4 id="BluzelleCSharp_BluzelleApi_Count" data-uid="BluzelleCSharp.BluzelleApi.Count">Count()</h4>
+  <div class="markdown level1 summary"><p>Get keys count in current namespace</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;int&gt; Count()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/new/master/apiSpec/new?filename=BluzelleCSharp_BluzelleApi_Create_System_String_System_String_BluzelleCSharp_Models_LeaseInfo_BluzelleCSharp_Models_GasInfo_.md&amp;value=---%0Auid%3A%20BluzelleCSharp.BluzelleApi.Create(System.String%2CSystem.String%2CBluzelleCSharp.Models.LeaseInfo%2CBluzelleCSharp.Models.GasInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/blob/master/BluzelleCSharp/BluzelleAPI.cs/#L135">View Source</a>
+  </span>
+  <a id="BluzelleCSharp_BluzelleApi_Create_" data-uid="BluzelleCSharp.BluzelleApi.Create*"></a>
+  <h4 id="BluzelleCSharp_BluzelleApi_Create_System_String_System_String_BluzelleCSharp_Models_LeaseInfo_BluzelleCSharp_Models_GasInfo_" data-uid="BluzelleCSharp.BluzelleApi.Create(System.String,System.String,BluzelleCSharp.Models.LeaseInfo,BluzelleCSharp.Models.GasInfo)">Create(String, String, LeaseInfo, GasInfo)</h4>
+  <div class="markdown level1 summary"><p>Create <code data-dev-comment-type="paramref" class="paramref">key</code> with <code data-dev-comment-type="paramref" class="paramref">value</code> in current namespace</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task Create(string key, string value, LeaseInfo leaseInfo = null, GasInfo gasInfo = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>String key to create</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>String value of key</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BluzelleCSharp.Models.LeaseInfo.html">LeaseInfo</a></td>
+        <td><span class="parametername">leaseInfo</span></td>
+        <td><p>Lease time for new key</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BluzelleCSharp.Models.GasInfo.html">GasInfo</a></td>
+        <td><span class="parametername">gasInfo</span></td>
+        <td><p>Gas specified for transaction execution</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BluzelleCSharp.Exceptions.KeyAlreadyExistsException.html">KeyAlreadyExistsException</a></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BluzelleCSharp.Exceptions.KeyContainsSlashException.html">KeyContainsSlashException</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/new/master/apiSpec/new?filename=BluzelleCSharp_BluzelleApi_Delete_System_String_BluzelleCSharp_Models_GasInfo_.md&amp;value=---%0Auid%3A%20BluzelleCSharp.BluzelleApi.Delete(System.String%2CBluzelleCSharp.Models.GasInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/blob/master/BluzelleCSharp/BluzelleAPI.cs/#L213">View Source</a>
+  </span>
+  <a id="BluzelleCSharp_BluzelleApi_Delete_" data-uid="BluzelleCSharp.BluzelleApi.Delete*"></a>
+  <h4 id="BluzelleCSharp_BluzelleApi_Delete_System_String_BluzelleCSharp_Models_GasInfo_" data-uid="BluzelleCSharp.BluzelleApi.Delete(System.String,BluzelleCSharp.Models.GasInfo)">Delete(String, GasInfo)</h4>
+  <div class="markdown level1 summary"><p>Delete <code data-dev-comment-type="paramref" class="paramref">key</code> from current namespace</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task Delete(string key, GasInfo gasInfo = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Key to delete</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BluzelleCSharp.Models.GasInfo.html">GasInfo</a></td>
+        <td><span class="parametername">gasInfo</span></td>
+        <td><p>Gas specified for transaction execution</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/new/master/apiSpec/new?filename=BluzelleCSharp_BluzelleApi_DeleteAll_BluzelleCSharp_Models_GasInfo_.md&amp;value=---%0Auid%3A%20BluzelleCSharp.BluzelleApi.DeleteAll(BluzelleCSharp.Models.GasInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/blob/master/BluzelleCSharp/BluzelleAPI.cs/#L226">View Source</a>
+  </span>
+  <a id="BluzelleCSharp_BluzelleApi_DeleteAll_" data-uid="BluzelleCSharp.BluzelleApi.DeleteAll*"></a>
+  <h4 id="BluzelleCSharp_BluzelleApi_DeleteAll_BluzelleCSharp_Models_GasInfo_" data-uid="BluzelleCSharp.BluzelleApi.DeleteAll(BluzelleCSharp.Models.GasInfo)">DeleteAll(GasInfo)</h4>
+  <div class="markdown level1 summary"><p>Delete all keys in current namespace</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DeleteAll(GasInfo gasInfo = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BluzelleCSharp.Models.GasInfo.html">GasInfo</a></td>
+        <td><span class="parametername">gasInfo</span></td>
+        <td><p>Gas specified for transaction execution</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/new/master/apiSpec/new?filename=BluzelleCSharp_BluzelleApi_GetKeyValues.md&amp;value=---%0Auid%3A%20BluzelleCSharp.BluzelleApi.GetKeyValues%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/blob/master/BluzelleCSharp/BluzelleAPI.cs/#L85">View Source</a>
+  </span>
+  <a id="BluzelleCSharp_BluzelleApi_GetKeyValues_" data-uid="BluzelleCSharp.BluzelleApi.GetKeyValues*"></a>
+  <h4 id="BluzelleCSharp_BluzelleApi_GetKeyValues" data-uid="BluzelleCSharp.BluzelleApi.GetKeyValues">GetKeyValues()</h4>
+  <div class="markdown level1 summary"><p>Get all data in Key-Value style from this namespace</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Dictionary&lt;string, string&gt;&gt; GetKeyValues()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td><p>Dictionary contains keys and values</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/new/master/apiSpec/new?filename=BluzelleCSharp_BluzelleApi_GetLease_System_String_.md&amp;value=---%0Auid%3A%20BluzelleCSharp.BluzelleApi.GetLease(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/blob/master/BluzelleCSharp/BluzelleAPI.cs/#L96">View Source</a>
+  </span>
+  <a id="BluzelleCSharp_BluzelleApi_GetLease_" data-uid="BluzelleCSharp.BluzelleApi.GetLease*"></a>
+  <h4 id="BluzelleCSharp_BluzelleApi_GetLease_System_String_" data-uid="BluzelleCSharp.BluzelleApi.GetLease(System.String)">GetLease(String)</h4>
+  <div class="markdown level1 summary"><p>Get lease time of key <code data-dev-comment-type="paramref" class="paramref">id</code></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;long&gt; GetLease(string id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>DB key string</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Int64</span>&gt;</td>
+        <td><p>Lease time in seconds</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/new/master/apiSpec/new?filename=BluzelleCSharp_BluzelleApi_GetNShortestLease_System_Int32_.md&amp;value=---%0Auid%3A%20BluzelleCSharp.BluzelleApi.GetNShortestLease(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/blob/master/BluzelleCSharp/BluzelleAPI.cs/#L108">View Source</a>
+  </span>
+  <a id="BluzelleCSharp_BluzelleApi_GetNShortestLease_" data-uid="BluzelleCSharp.BluzelleApi.GetNShortestLease*"></a>
+  <h4 id="BluzelleCSharp_BluzelleApi_GetNShortestLease_System_Int32_" data-uid="BluzelleCSharp.BluzelleApi.GetNShortestLease(System.Int32)">GetNShortestLease(Int32)</h4>
+  <div class="markdown level1 summary"><p>Get N shortest leases in current namespace</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;KeyValuePair&lt;string, long&gt;&gt;&gt; GetNShortestLease(int n)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">n</span></td>
+        <td><p>Leases number to return</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.Collections.Generic.KeyValuePair</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Int64</span>&gt;&gt;&gt;</td>
+        <td><p>List containing shortest leases in ascending order with KeyValuePair of keys and its' leases in seconds</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/new/master/apiSpec/new?filename=BluzelleCSharp_BluzelleApi_GetVersion.md&amp;value=---%0Auid%3A%20BluzelleCSharp.BluzelleApi.GetVersion%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/blob/master/BluzelleCSharp/BluzelleAPI.cs/#L117">View Source</a>
+  </span>
+  <a id="BluzelleCSharp_BluzelleApi_GetVersion_" data-uid="BluzelleCSharp.BluzelleApi.GetVersion*"></a>
+  <h4 id="BluzelleCSharp_BluzelleApi_GetVersion" data-uid="BluzelleCSharp.BluzelleApi.GetVersion">GetVersion()</h4>
+  <div class="markdown level1 summary"><p>Get version of current node</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; GetVersion()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/new/master/apiSpec/new?filename=BluzelleCSharp_BluzelleApi_HasKey_System_String_.md&amp;value=---%0Auid%3A%20BluzelleCSharp.BluzelleApi.HasKey(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/blob/master/BluzelleCSharp/BluzelleAPI.cs/#L57">View Source</a>
+  </span>
+  <a id="BluzelleCSharp_BluzelleApi_HasKey_" data-uid="BluzelleCSharp.BluzelleApi.HasKey*"></a>
+  <h4 id="BluzelleCSharp_BluzelleApi_HasKey_System_String_" data-uid="BluzelleCSharp.BluzelleApi.HasKey(System.String)">HasKey(String)</h4>
+  <div class="markdown level1 summary"><p>Check existence of key <code data-dev-comment-type="paramref" class="paramref">id</code></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; HasKey(string id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>DB key string</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><p>true if key exists in current namespace</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/new/master/apiSpec/new?filename=BluzelleCSharp_BluzelleApi_Keys.md&amp;value=---%0Auid%3A%20BluzelleCSharp.BluzelleApi.Keys%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/blob/master/BluzelleCSharp/BluzelleAPI.cs/#L66">View Source</a>
+  </span>
+  <a id="BluzelleCSharp_BluzelleApi_Keys_" data-uid="BluzelleCSharp.BluzelleApi.Keys*"></a>
+  <h4 id="BluzelleCSharp_BluzelleApi_Keys" data-uid="BluzelleCSharp.BluzelleApi.Keys">Keys()</h4>
+  <div class="markdown level1 summary"><p>Retrieve list of keys in current namespace</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;string&gt;&gt; Keys()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;&gt;</td>
+        <td><p>List of strings with keys available</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/new/master/apiSpec/new?filename=BluzelleCSharp_BluzelleApi_Read_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20BluzelleCSharp.BluzelleApi.Read(System.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/blob/master/BluzelleCSharp/BluzelleAPI.cs/#L45">View Source</a>
+  </span>
+  <a id="BluzelleCSharp_BluzelleApi_Read_" data-uid="BluzelleCSharp.BluzelleApi.Read*"></a>
+  <h4 id="BluzelleCSharp_BluzelleApi_Read_System_String_System_Boolean_" data-uid="BluzelleCSharp.BluzelleApi.Read(System.String,System.Boolean)">Read(String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Read value of key <code data-dev-comment-type="paramref" class="paramref">id</code></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; Read(string id, bool prove = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>DB key string</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">prove</span></td>
+        <td><p>Use &quot;pread&quot; of &quot;read&quot; operation</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><p>String value</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BluzelleCSharp.Exceptions.KeyNotFoundException.html">KeyNotFoundException</a></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BluzelleCSharp.Exceptions.CouldNotReadKeyException.html">CouldNotReadKeyException</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/new/master/apiSpec/new?filename=BluzelleCSharp_BluzelleApi_Rename_System_String_System_String_BluzelleCSharp_Models_GasInfo_.md&amp;value=---%0Auid%3A%20BluzelleCSharp.BluzelleApi.Rename(System.String%2CSystem.String%2CBluzelleCSharp.Models.GasInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/blob/master/BluzelleCSharp/BluzelleAPI.cs/#L238">View Source</a>
+  </span>
+  <a id="BluzelleCSharp_BluzelleApi_Rename_" data-uid="BluzelleCSharp.BluzelleApi.Rename*"></a>
+  <h4 id="BluzelleCSharp_BluzelleApi_Rename_System_String_System_String_BluzelleCSharp_Models_GasInfo_" data-uid="BluzelleCSharp.BluzelleApi.Rename(System.String,System.String,BluzelleCSharp.Models.GasInfo)">Rename(String, String, GasInfo)</h4>
+  <div class="markdown level1 summary"><p>Rename <code data-dev-comment-type="paramref" class="paramref">key</code> into <code data-dev-comment-type="paramref" class="paramref">newKey</code> in current namespace</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task Rename(string key, string newKey, GasInfo gasInfo = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Key name which to rename</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">newKey</span></td>
+        <td><p>New name for <code data-dev-comment-type="paramref" class="paramref">key</code></p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BluzelleCSharp.Models.GasInfo.html">GasInfo</a></td>
+        <td><span class="parametername">gasInfo</span></td>
+        <td><p>Gas specified for transaction execution</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/new/master/apiSpec/new?filename=BluzelleCSharp_BluzelleApi_Renew_System_String_BluzelleCSharp_Models_LeaseInfo_BluzelleCSharp_Models_GasInfo_.md&amp;value=---%0Auid%3A%20BluzelleCSharp.BluzelleApi.Renew(System.String%2CBluzelleCSharp.Models.LeaseInfo%2CBluzelleCSharp.Models.GasInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/blob/master/BluzelleCSharp/BluzelleAPI.cs/#L254">View Source</a>
+  </span>
+  <a id="BluzelleCSharp_BluzelleApi_Renew_" data-uid="BluzelleCSharp.BluzelleApi.Renew*"></a>
+  <h4 id="BluzelleCSharp_BluzelleApi_Renew_System_String_BluzelleCSharp_Models_LeaseInfo_BluzelleCSharp_Models_GasInfo_" data-uid="BluzelleCSharp.BluzelleApi.Renew(System.String,BluzelleCSharp.Models.LeaseInfo,BluzelleCSharp.Models.GasInfo)">Renew(String, LeaseInfo, GasInfo)</h4>
+  <div class="markdown level1 summary"><p>Renew lease time of a key in current namespace</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task Renew(string key, LeaseInfo leaseInfo = null, GasInfo gasInfo = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Key to update</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BluzelleCSharp.Models.LeaseInfo.html">LeaseInfo</a></td>
+        <td><span class="parametername">leaseInfo</span></td>
+        <td><p>Lease time to set</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BluzelleCSharp.Models.GasInfo.html">GasInfo</a></td>
+        <td><span class="parametername">gasInfo</span></td>
+        <td><p>Gas specified for transaction execution</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/new/master/apiSpec/new?filename=BluzelleCSharp_BluzelleApi_RenewAll_BluzelleCSharp_Models_LeaseInfo_BluzelleCSharp_Models_GasInfo_.md&amp;value=---%0Auid%3A%20BluzelleCSharp.BluzelleApi.RenewAll(BluzelleCSharp.Models.LeaseInfo%2CBluzelleCSharp.Models.GasInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/blob/master/BluzelleCSharp/BluzelleAPI.cs/#L268">View Source</a>
+  </span>
+  <a id="BluzelleCSharp_BluzelleApi_RenewAll_" data-uid="BluzelleCSharp.BluzelleApi.RenewAll*"></a>
+  <h4 id="BluzelleCSharp_BluzelleApi_RenewAll_BluzelleCSharp_Models_LeaseInfo_BluzelleCSharp_Models_GasInfo_" data-uid="BluzelleCSharp.BluzelleApi.RenewAll(BluzelleCSharp.Models.LeaseInfo,BluzelleCSharp.Models.GasInfo)">RenewAll(LeaseInfo, GasInfo)</h4>
+  <div class="markdown level1 summary"><p>Renew lease time for all keys current namespace</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task RenewAll(LeaseInfo leaseInfo = null, GasInfo gasInfo = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BluzelleCSharp.Models.LeaseInfo.html">LeaseInfo</a></td>
+        <td><span class="parametername">leaseInfo</span></td>
+        <td><p>Lease time to set</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BluzelleCSharp.Models.GasInfo.html">GasInfo</a></td>
+        <td><span class="parametername">gasInfo</span></td>
+        <td><p>Gas specified for transaction execution</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/new/master/apiSpec/new?filename=BluzelleCSharp_BluzelleApi_TxCount_BluzelleCSharp_Models_GasInfo_.md&amp;value=---%0Auid%3A%20BluzelleCSharp.BluzelleApi.TxCount(BluzelleCSharp.Models.GasInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/blob/master/BluzelleCSharp/BluzelleAPI.cs/#L321">View Source</a>
+  </span>
+  <a id="BluzelleCSharp_BluzelleApi_TxCount_" data-uid="BluzelleCSharp.BluzelleApi.TxCount*"></a>
+  <h4 id="BluzelleCSharp_BluzelleApi_TxCount_BluzelleCSharp_Models_GasInfo_" data-uid="BluzelleCSharp.BluzelleApi.TxCount(BluzelleCSharp.Models.GasInfo)">TxCount(GasInfo)</h4>
+  <div class="markdown level1 summary"><p>Get keys count in current namespace</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;int&gt; TxCount(GasInfo gasInfo = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BluzelleCSharp.Models.GasInfo.html">GasInfo</a></td>
+        <td><span class="parametername">gasInfo</span></td>
+        <td><p>Gas specified for transaction execution</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/new/master/apiSpec/new?filename=BluzelleCSharp_BluzelleApi_TxGetKeyValues_BluzelleCSharp_Models_GasInfo_.md&amp;value=---%0Auid%3A%20BluzelleCSharp.BluzelleApi.TxGetKeyValues(BluzelleCSharp.Models.GasInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/blob/master/BluzelleCSharp/BluzelleAPI.cs/#L331">View Source</a>
+  </span>
+  <a id="BluzelleCSharp_BluzelleApi_TxGetKeyValues_" data-uid="BluzelleCSharp.BluzelleApi.TxGetKeyValues*"></a>
+  <h4 id="BluzelleCSharp_BluzelleApi_TxGetKeyValues_BluzelleCSharp_Models_GasInfo_" data-uid="BluzelleCSharp.BluzelleApi.TxGetKeyValues(BluzelleCSharp.Models.GasInfo)">TxGetKeyValues(GasInfo)</h4>
+  <div class="markdown level1 summary"><p>Get all data in Key-Value style from this namespace</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Dictionary&lt;string, string&gt;&gt; TxGetKeyValues(GasInfo gasInfo = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BluzelleCSharp.Models.GasInfo.html">GasInfo</a></td>
+        <td><span class="parametername">gasInfo</span></td>
+        <td><p>Gas specified for transaction execution</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td><p>Dictionary contains keys and values</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/new/master/apiSpec/new?filename=BluzelleCSharp_BluzelleApi_TxGetLease_System_String_BluzelleCSharp_Models_GasInfo_.md&amp;value=---%0Auid%3A%20BluzelleCSharp.BluzelleApi.TxGetLease(System.String%2CBluzelleCSharp.Models.GasInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/blob/master/BluzelleCSharp/BluzelleAPI.cs/#L343">View Source</a>
+  </span>
+  <a id="BluzelleCSharp_BluzelleApi_TxGetLease_" data-uid="BluzelleCSharp.BluzelleApi.TxGetLease*"></a>
+  <h4 id="BluzelleCSharp_BluzelleApi_TxGetLease_System_String_BluzelleCSharp_Models_GasInfo_" data-uid="BluzelleCSharp.BluzelleApi.TxGetLease(System.String,BluzelleCSharp.Models.GasInfo)">TxGetLease(String, GasInfo)</h4>
+  <div class="markdown level1 summary"><p>Get lease time of <code data-dev-comment-type="paramref" class="paramref">key</code></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;long&gt; TxGetLease(string key, GasInfo gasInfo = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>DB key string</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BluzelleCSharp.Models.GasInfo.html">GasInfo</a></td>
+        <td><span class="parametername">gasInfo</span></td>
+        <td><p>Gas specified for transaction execution</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Int64</span>&gt;</td>
+        <td><p>Lease time in seconds</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/new/master/apiSpec/new?filename=BluzelleCSharp_BluzelleApi_TxGetNShortestLease_System_Int32_BluzelleCSharp_Models_GasInfo_.md&amp;value=---%0Auid%3A%20BluzelleCSharp.BluzelleApi.TxGetNShortestLease(System.Int32%2CBluzelleCSharp.Models.GasInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/blob/master/BluzelleCSharp/BluzelleAPI.cs/#L357">View Source</a>
+  </span>
+  <a id="BluzelleCSharp_BluzelleApi_TxGetNShortestLease_" data-uid="BluzelleCSharp.BluzelleApi.TxGetNShortestLease*"></a>
+  <h4 id="BluzelleCSharp_BluzelleApi_TxGetNShortestLease_System_Int32_BluzelleCSharp_Models_GasInfo_" data-uid="BluzelleCSharp.BluzelleApi.TxGetNShortestLease(System.Int32,BluzelleCSharp.Models.GasInfo)">TxGetNShortestLease(Int32, GasInfo)</h4>
+  <div class="markdown level1 summary"><p>Get N shortest leases in current namespace</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;KeyValuePair&lt;string, long&gt;&gt;&gt; TxGetNShortestLease(int n, GasInfo gasInfo = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">n</span></td>
+        <td><p>Leases number to return</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BluzelleCSharp.Models.GasInfo.html">GasInfo</a></td>
+        <td><span class="parametername">gasInfo</span></td>
+        <td><p>Gas specified for transaction execution</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.Collections.Generic.KeyValuePair</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Int64</span>&gt;&gt;&gt;</td>
+        <td><p>List containing shortest leases in ascending order with KeyValuePair of keys and its' leases in seconds</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/new/master/apiSpec/new?filename=BluzelleCSharp_BluzelleApi_TxHas_System_String_BluzelleCSharp_Models_GasInfo_.md&amp;value=---%0Auid%3A%20BluzelleCSharp.BluzelleApi.TxHas(System.String%2CBluzelleCSharp.Models.GasInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/blob/master/BluzelleCSharp/BluzelleAPI.cs/#L297">View Source</a>
+  </span>
+  <a id="BluzelleCSharp_BluzelleApi_TxHas_" data-uid="BluzelleCSharp.BluzelleApi.TxHas*"></a>
+  <h4 id="BluzelleCSharp_BluzelleApi_TxHas_System_String_BluzelleCSharp_Models_GasInfo_" data-uid="BluzelleCSharp.BluzelleApi.TxHas(System.String,BluzelleCSharp.Models.GasInfo)">TxHas(String, GasInfo)</h4>
+  <div class="markdown level1 summary"><p>Check existence of <code data-dev-comment-type="paramref" class="paramref">key</code></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; TxHas(string key, GasInfo gasInfo = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>DB key string</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BluzelleCSharp.Models.GasInfo.html">GasInfo</a></td>
+        <td><span class="parametername">gasInfo</span></td>
+        <td><p>Gas specified for transaction execution</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><p>true if key exists in current namespace</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/new/master/apiSpec/new?filename=BluzelleCSharp_BluzelleApi_TxKeys_BluzelleCSharp_Models_GasInfo_.md&amp;value=---%0Auid%3A%20BluzelleCSharp.BluzelleApi.TxKeys(BluzelleCSharp.Models.GasInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/blob/master/BluzelleCSharp/BluzelleAPI.cs/#L310">View Source</a>
+  </span>
+  <a id="BluzelleCSharp_BluzelleApi_TxKeys_" data-uid="BluzelleCSharp.BluzelleApi.TxKeys*"></a>
+  <h4 id="BluzelleCSharp_BluzelleApi_TxKeys_BluzelleCSharp_Models_GasInfo_" data-uid="BluzelleCSharp.BluzelleApi.TxKeys(BluzelleCSharp.Models.GasInfo)">TxKeys(GasInfo)</h4>
+  <div class="markdown level1 summary"><p>Retrieve list of keys in current namespace</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;string&gt;&gt; TxKeys(GasInfo gasInfo = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BluzelleCSharp.Models.GasInfo.html">GasInfo</a></td>
+        <td><span class="parametername">gasInfo</span></td>
+        <td><p>Gas specified for transaction execution</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;&gt;</td>
+        <td><p>List of strings with keys available</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/new/master/apiSpec/new?filename=BluzelleCSharp_BluzelleApi_TxRead_System_String_BluzelleCSharp_Models_GasInfo_.md&amp;value=---%0Auid%3A%20BluzelleCSharp.BluzelleApi.TxRead(System.String%2CBluzelleCSharp.Models.GasInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/blob/master/BluzelleCSharp/BluzelleAPI.cs/#L283">View Source</a>
+  </span>
+  <a id="BluzelleCSharp_BluzelleApi_TxRead_" data-uid="BluzelleCSharp.BluzelleApi.TxRead*"></a>
+  <h4 id="BluzelleCSharp_BluzelleApi_TxRead_System_String_BluzelleCSharp_Models_GasInfo_" data-uid="BluzelleCSharp.BluzelleApi.TxRead(System.String,BluzelleCSharp.Models.GasInfo)">TxRead(String, GasInfo)</h4>
+  <div class="markdown level1 summary"><p>Read value of <code data-dev-comment-type="paramref" class="paramref">key</code></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; TxRead(string key, GasInfo gasInfo = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>DB key string</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BluzelleCSharp.Models.GasInfo.html">GasInfo</a></td>
+        <td><span class="parametername">gasInfo</span></td>
+        <td><p>Gas specified for transaction execution</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><p>String value</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BluzelleCSharp.Exceptions.KeyNotFoundException.html">KeyNotFoundException</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/new/master/apiSpec/new?filename=BluzelleCSharp_BluzelleApi_Update_System_String_System_String_BluzelleCSharp_Models_LeaseInfo_BluzelleCSharp_Models_GasInfo_.md&amp;value=---%0Auid%3A%20BluzelleCSharp.BluzelleApi.Update(System.String%2CSystem.String%2CBluzelleCSharp.Models.LeaseInfo%2CBluzelleCSharp.Models.GasInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/blob/master/BluzelleCSharp/BluzelleAPI.cs/#L163">View Source</a>
+  </span>
+  <a id="BluzelleCSharp_BluzelleApi_Update_" data-uid="BluzelleCSharp.BluzelleApi.Update*"></a>
+  <h4 id="BluzelleCSharp_BluzelleApi_Update_System_String_System_String_BluzelleCSharp_Models_LeaseInfo_BluzelleCSharp_Models_GasInfo_" data-uid="BluzelleCSharp.BluzelleApi.Update(System.String,System.String,BluzelleCSharp.Models.LeaseInfo,BluzelleCSharp.Models.GasInfo)">Update(String, String, LeaseInfo, GasInfo)</h4>
+  <div class="markdown level1 summary"><p>Update Key's value to <code data-dev-comment-type="paramref" class="paramref">value</code> in current namespace</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task Update(string key, string value, LeaseInfo leaseInfo = null, GasInfo gasInfo = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>String key to update</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>String value of key</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BluzelleCSharp.Models.LeaseInfo.html">LeaseInfo</a></td>
+        <td><span class="parametername">leaseInfo</span></td>
+        <td><p>Lease time which to set after updating</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BluzelleCSharp.Models.GasInfo.html">GasInfo</a></td>
+        <td><span class="parametername">gasInfo</span></td>
+        <td><p>Gas specified for transaction execution</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/new/master/apiSpec/new?filename=BluzelleCSharp_BluzelleApi_UpdateMany_System_Collections_Generic_Dictionary_System_String_System_String__BluzelleCSharp_Models_GasInfo_.md&amp;value=---%0Auid%3A%20BluzelleCSharp.BluzelleApi.UpdateMany(System.Collections.Generic.Dictionary%7BSystem.String%2CSystem.String%7D%2CBluzelleCSharp.Models.GasInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/BardinPetr/bluzelle-csharp/blob/master/BluzelleCSharp/BluzelleAPI.cs/#L192">View Source</a>
+  </span>
+  <a id="BluzelleCSharp_BluzelleApi_UpdateMany_" data-uid="BluzelleCSharp.BluzelleApi.UpdateMany*"></a>
+  <h4 id="BluzelleCSharp_BluzelleApi_UpdateMany_System_Collections_Generic_Dictionary_System_String_System_String__BluzelleCSharp_Models_GasInfo_" data-uid="BluzelleCSharp.BluzelleApi.UpdateMany(System.Collections.Generic.Dictionary{System.String,System.String},BluzelleCSharp.Models.GasInfo)">UpdateMany(Dictionary&lt;String, String&gt;, GasInfo)</h4>
+  <div class="markdown level1 summary"><p>Update number of keys simultaneously in current namespace</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task UpdateMany(Dictionary&lt;string, string&gt; data, GasInfo gasInfo = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">data</span></td>
+        <td><p>Dictionary with key-value pairs to update</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BluzelleCSharp.Models.GasInfo.html">GasInfo</a></td>
+        <td><span class="parametername">gasInfo</span></td>
+        <td><p>Gas specified for transaction execution</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/BardinPetr/bluzelle-csharp/new/master/apiSpec/new?filename=BluzelleCSharp_BluzelleApi.md&amp;value=---%0Auid%3A%20BluzelleCSharp.BluzelleApi%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/BardinPetr/bluzelle-csharp/blob/master/BluzelleCSharp/BluzelleAPI.cs/#L18" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

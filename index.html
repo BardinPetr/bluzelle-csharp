@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>BluzelleC# </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="BluzelleC# ">
+    <meta name="generator" content="docfx 2.45.1.0">
+    
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta property="docfx:navrel" content="toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+
+<p><a href="https://bluzelle.com/"><img src='https://raw.githubusercontent.com/bluzelle/api/master/source/images/Bluzelle%20-%20Logo%20-%20Big%20-%20Colour.png' alt="Bluzelle" style="width: 100%"></a></p>
+<h1 id="bluzellec">BluzelleC#</h1>
+<p>BluzelleC# is a native <em>.Net Core 3</em> library that can be used to access the Bluzelle database service.</p>
+<ul>
+<li><a href="https://bardinpetr.github.io/bluzelle-csharp/api/index.html">API docs</a></li>
+<li><a href="https://github.com/BardinPetr/bluzelle-csharp/tree/master/ExampleApp">Example application</a></li>
+<li><a href="https://drive.google.com/file/d/1jwpO9U1uuKS51o8UX_ANZsEWOabnseOe/view">Quickstart Video Demo</a></li>
+<li><a href="https://github.com/BardinPetr/bluzelle-csharp">Main repo</a></li>
+</ul>
+<h2 id="installation">Installation</h2>
+<h3 id="preparation">Preparation</h3>
+<ul>
+<li>Install .Net Core 3.1 (<a href="https://dotnet.microsoft.com/download">https://dotnet.microsoft.com/download</a>)</li>
+</ul>
+<h3 id="including-into-project">Including into project</h3>
+<h4 id="using-nuget">Using Nuget</h4>
+<pre><code>dotnet add package Bluzelle
+or
+nuget install Bluzelle
+</code></pre>
+<h4 id="building-from-source">Building from source</h4>
+<pre><code>git clone https://github.com/BardinPetr/bluzelle-csharp
+dotnet build
+</code></pre>
+<h2 id="quickstart">Quickstart</h2>
+<pre><code class="lang-c#">using BluzelleCSharp;
+using BluzelleCSharp.Models;
+
+var bz = new BluzelleApi(
+                    &quot;7f346254-2024-496f-bfa3-572a2e87ebd2&quot;,
+                    &quot;around buzz diagram captain obtain detail salon mango muffin brother morning jeans display attend knife carry green dwarf vendor hungry fan route pumpkin car&quot;,
+                    &quot;bluzelle1upsfjftremwgxz3gfy0wf3xgvwpymqx754ssu9&quot;);
+
+// Create key &quot;x&quot; with value &quot;data&quot; and lease of 1 min
+await bz.Create(&quot;x&quot;, &quot;data&quot;,
+    new LeaseInfo(0, 0, 1, 0),
+    new GasInfo {GasPrice = 10});
+
+// Read key &quot;x&quot; from DB
+Console.WriteLine(await bz.Read(&quot;x&quot;));
+</code></pre>
+<h3 id="main-points-about-library">Main Points About Library</h3>
+<ul>
+<li>All methods in lib are async</li>
+<li>Library ensures FIFO order of transaction execution</li>
+<li>Some methods has duplicate with <em>Tx</em> prefix: it means that command can be executed as transaction <em>(with prefix)</em> and as query <em>(without prefix)</em></li>
+<li>Library can run under mono</li>
+</ul>
+<h2 id="tests">Tests</h2>
+<p>Tests can be run using external test suite via HTTP API server located in TestAPI project.
+To run server:</p>
+<pre><code>cd TestAPI
+dotnet run
+</code></pre>
+<p>Then use http://localhost:5000/ as HTTP POST endpoint for queries in format:</p>
+<pre><code class="lang-json">{
+  &quot;method&quot;: &quot;$method name in Blzjs style$&quot;,
+  &quot;args&quot;: [&quot;$method arguments in Blzjs style$&quot;, ...] 
+}
+</code></pre>
+<p>All arguments are casted to string and then used in methods. For transaction calls gas configuration should be omitted, it is already set to <em>GasPrice=10</em>. Account data and namespace uuid should be placed in <em>TestAPI/appsettings.json</em>.</p>
+<p>Example:</p>
+<pre><code class="lang-json">{
+  &quot;method&quot;: &quot;create&quot;,
+  &quot;args&quot;: [&quot;key&quot;, &quot;value&quot;, 1000] // or [&quot;key&quot;, &quot;value&quot;, &quot;1000&quot;]
+}
+</code></pre>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/BardinPetr/bluzelle-csharp/blob/master/docfx_project/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

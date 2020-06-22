@@ -1,0 +1,476 @@
+{
+  "homepages": [],
+  "source_base_path": "/github/workspace/docfx_project",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.BluzelleApi.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.BluzelleApi.html",
+          "hash": "fYjrzPiRnMD0S5sbrMgAqg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Cosmos.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Cosmos.html",
+          "hash": "CYBY8ExcIQ1Bz1GQDABJVg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Exceptions.CouldNotReadKeyException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Exceptions.CouldNotReadKeyException.html",
+          "hash": "TvI7gvHzeacLU4VA2+HXdg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Exceptions.InitializationException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Exceptions.InitializationException.html",
+          "hash": "KBhKTUmBwKbPDIvxJJXWHw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Exceptions.InsufficientFundsException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Exceptions.InsufficientFundsException.html",
+          "hash": "ilpj+XWyVZT7mz1kL86qbQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Exceptions.InvalidChainIdException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Exceptions.InvalidChainIdException.html",
+          "hash": "ErUQffTJs7YEz+5AdLgs0A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Exceptions.InvalidLeaseException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Exceptions.InvalidLeaseException.html",
+          "hash": "Ha93zox2C/A95EjcBkSuCg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Exceptions.KeyAlreadyExistsException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Exceptions.KeyAlreadyExistsException.html",
+          "hash": "9pIU9uXc/5WlgX5+4fo3Ew=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Exceptions.KeyContainsSlashException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Exceptions.KeyContainsSlashException.html",
+          "hash": "HL5nlcUqs4eJKQffCOS9Lg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Exceptions.KeyDoesNotExistException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Exceptions.KeyDoesNotExistException.html",
+          "hash": "wMgXxUQDpNtJT/eUguHS9Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Exceptions.KeyEmptyException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Exceptions.KeyEmptyException.html",
+          "hash": "CTV2jErjlUq3YPe6Duo5wA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Exceptions.KeyNotFoundException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Exceptions.KeyNotFoundException.html",
+          "hash": "iQMK7M78cvBuv8Z859WUsQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Exceptions.MnemonicInvalidException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Exceptions.MnemonicInvalidException.html",
+          "hash": "FEgZuAGwqx+boD0vHR0d4A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Exceptions.NodeConnectionFailedException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Exceptions.NodeConnectionFailedException.html",
+          "hash": "ds2Vm4pqOgo9XDqL8yOHYA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Exceptions.QueryFailedException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Exceptions.QueryFailedException.html",
+          "hash": "E6D+cqxaBEAz2PmrwToo4A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Exceptions.TransactionExecutionException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Exceptions.TransactionExecutionException.html",
+          "hash": "wquNYAQDD/pHsx9yK7XJbQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Exceptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Exceptions.html",
+          "hash": "TSP2vAB8r7Val/1oAGyjLQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Models.Account.AccountData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Models.Account.AccountData.html",
+          "hash": "/R8jMQYfvSb3XHE6asajeQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Models.Account.Coin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Models.Account.Coin.html",
+          "hash": "HHz4uIqw5jzzeLLRfTdYsg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Models.Account.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Models.Account.html",
+          "hash": "45VqA12rv+ujQO/nNLoC5Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Models.GasInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Models.GasInfo.html",
+          "hash": "sKrR1uk8/h1geKzONXfQWw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Models.LeaseInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Models.LeaseInfo.html",
+          "hash": "p67vTOTfkJPr+cmnWex/zw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Models.Responce-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Models.Responce-1.html",
+          "hash": "w61Wq78SJ8WDczKz/hjWHw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Models.Signature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Models.Signature.html",
+          "hash": "nLPgYmg6NGZyNMBNrViPFQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Models.SignaturePubKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Models.SignaturePubKey.html",
+          "hash": "tGs6fQsGO9eP7gG1pSTuiA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Models.html",
+          "hash": "K8ZWrFDdOPzQ5NG8A4d2FA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Utils.Bech32.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Utils.Bech32.html",
+          "hash": "KQ3IG/BVeJdwyrUwG0iL5w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Utils.SerialQueue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Utils.SerialQueue.html",
+          "hash": "Fy8sm8e2imAMV8KEoSX6tA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Utils.Utils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Utils.Utils.html",
+          "hash": "CrR6k6yCRt34bbqIiKa/qw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.Utils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.Utils.html",
+          "hash": "Dp3r882LtvjBcyMaDmEziA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BluzelleCSharp.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BluzelleCSharp.html",
+          "hash": "TKYjSejgJGjt4u0GoSVu9g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "i1rpAINI/ZPOQFISIfgq0g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "p7AGaSI493F2TDNws4QfFQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "kaeV+bfK0y+jUYAN2sWDxw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "1Xdjw8Ib7j95/TiJDj+CFw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 2,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 31,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
